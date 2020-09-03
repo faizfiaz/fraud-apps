@@ -32,7 +32,7 @@ class AddFraudFragment : BaseFragment<FragmentAddFraudBinding, AddFraudViewModel
         super.onCreate(savedInstanceState)
         viewModel.setNavigator(this)
         viewModel.initData(arguments?.getString("reportId"),
-                arguments?.getSerializable("data") as Fraud)
+                arguments?.getSerializable("data") as Fraud?)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

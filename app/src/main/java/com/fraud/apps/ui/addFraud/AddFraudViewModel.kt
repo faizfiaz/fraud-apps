@@ -25,13 +25,13 @@ open class AddFraudViewModel(baseUsecase: IAppUsecases, schedulerProvider: Sched
 
     var isEdit = false
     lateinit var fraud: Fraud
-    fun initData(reportId: String?, fraud: Fraud) {
+    fun initData(reportId: String?, fraud: Fraud?) {
         if (reportId != null) {
             this.reportId = reportId
             isEdit = false
             buttonFraud.set("Submit Fraud")
         } else {
-            this.fraud = fraud
+            this.fraud = fraud!!
             isEdit = true
             fraudId = fraud.id!!
             this.reportId = fraud.reportId!!
