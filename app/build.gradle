@@ -1,0 +1,199 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.fraud.apps"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        setProperty("archivesBaseName", applicationId + "-" + versionCode + "-v" + versionName)
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("keystores/debug.keystore")
+        }
+
+        release {
+            Properties props = new Properties()
+            props.load(new FileInputStream(file("env/release.properties")))
+            storeFile file("keystores/release_keystore.jks")
+            storePassword props["SIGNING_STORE_PASSWORD"]
+            keyAlias props["SIGNING_KEY_ALIAS"]
+            keyPassword props["SIGNING_KEY_PASSWORD"]
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            Properties props = new Properties()
+            props.load(new FileInputStream(new File('app/env/debug.properties')))
+
+            manifestPlaceholders = [
+                    APP_NAME      : "DBG - Fraud",
+                    FABRIC_API_KEY: "DBG123"
+            ]
+
+            buildConfigField "String", "API_BASE_URL", props["API_BASE_URL"]
+            buildConfigField("boolean", "USE_MOCK_RESPONSE", "false")
+
+            versionNameSuffix "-dbg"
+            applicationIdSuffix ".dbg"
+
+            signingConfig signingConfigs.debug
+        }
+        staging {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            Properties props = new Properties()
+            props.load(new FileInputStream(new File('app/env/staging.properties')))
+
+            manifestPlaceholders = [
+                    APP_NAME      : "STG - Fraud",
+                    FABRIC_API_KEY: "STG123"
+            ]
+
+            buildConfigField "String", "API_BASE_URL", props["API_BASE_URL"]
+            buildConfigField("boolean", "USE_MOCK_RESPONSE", "false")
+
+            versionNameSuffix "-stg"
+            applicationIdSuffix ".stg"
+
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            Properties props = new Properties()
+            props.load(new FileInputStream(new File('app/env/release.properties')))
+
+            manifestPlaceholders = [
+                    APP_NAME      : "Fraud",
+                    FABRIC_API_KEY: "48bb26bf9ceb12bffa16cbbe1d97c465ff0ba3df"
+            ]
+
+            buildConfigField "String", "API_BASE_URL", props["API_BASE_URL"]
+            buildConfigField("boolean", "USE_MOCK_RESPONSE", "false")
+        }
+    }
+
+    kapt {
+        generateStubs = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //android support libraries
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "com.google.android.material:material:$rootProject.googleLayoutVersion"
+    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+    implementation "me.everything:overscroll-decor-android:$rootProject.overScroll"
+    implementation "jp.wasabeef:recyclerview-animators:$rootProject.animationRecycler"
+    implementation "com.prolificinteractive:material-calendarview:$rootProject.calendarView"
+    implementation "com.akexorcist:snap-time-picker:$rootProject.timePicker"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    // font
+    implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacy"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+
+    // Navigation Arch
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navVersion"
+
+    // Dynamic Feature Module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navVersion"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navVersion"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.loggingInterceptorVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.converterScalarsVersion"
+    // RxJava + Retrofit
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxRetrofitVersion"
+
+    // view model
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
+    implementation "androidx.core:core-ktx:$rootProject.kotlinCoreVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+
+    // unit tests
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.jnTestVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    testImplementation "junit:junit:$rootProject.junitTestVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+
+}
+//apply plugin: 'com.google.gms.google-services'
+//googleServices { disableVersionCheck = true }
+
+repositories {
+    mavenCentral()
+}
+
+

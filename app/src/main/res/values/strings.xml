@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Fraud</string>
+    <string name="font_path_poppins">fonts/poppins/Poppins-Regular.ttf</string>
+    <string name="font_path_poppins_medium">fonts/poppins/Poppins-Medium.ttf</string>
+
+    <!-- GENERAL -->
+    <string name="label_history">History</string>
+    <string name="sample_lorem_medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</string>
+    <string name="sample_lorem_short">Lorem ipsum dolor sit amet, consectetur adipiscing</string>
+    <string name="empty_general">Empty Data</string>
+    <string name="content_empty_general">Are you sure this page is you looking for?</string>
+
+    <!-- DIALOG -->
+    <string name="please_wait">Please wait……</string>
+
+    <!--ALERT DIALOG -->
+    <string name="alert_downloading">Downloading</string>
+    <string name="alert_downloading_message">An error occurs. Please try again!</string>
+    <string name="alert_ok_button">OK</string>
+    <string name="alert_cancel_button">Cancel</string>
+    <string name="no_internet_title">No internet</string>
+    <string name="no_internet_description">Please check your connection!</string>
+    <string name="error_fetching_remote_data_title">Error fetching data from server!</string>
+    <string name="error_fetching_remote_data_description">An error occurs while fetching data from server. Please try again later!</string>
+    <string name="font_path_grotesk">fonts/grotesk/Tele-GroteskNor.ttf</string>
+    <string name="label_hint_search_user">Search user</string>
+    <string name="label_empty_data">Data Kosong</string>
+    <string name="login_page_placeholder_email">Email</string>
+    <string name="login_page_placeholder_password">Password</string>
+    <string name="login_page_login">Login</string>
+    <string name="label_app">Fraud Complaint</string>
+    <string name="label_o">O</string>
+    <string name="label_remember_me">Remember me</string>
+    <string name="label_title_signup">Don\'t have an account?</string>
+    <string name="label_signup_here">Signup here</string>
+    <string name="label_greetings">Report the online fraud account number so that no more people become victims of online fraud.!</string>
+    <string name="label_trips_list">Trips List</string>
+    <string name="arrive_date">Date Arrive</string>
+    <string name="arrive_time">Arrive Time</string>
+    <string name="label_eta">Estimated Time Arrive (ETA)</string>
+
+    <string name="label_value_total_account">Total Rekening yang dilaporkan</string>
+    <string name="label_value_total_phone_number">Total No. Telp yang dilaporkan</string>
+    <string name="label_value_total_loss">Total Kerugian yang dilaporkan</string>
+    <string name="label_value_new_loss">Kerugian Terbaru</string>
+    <string name="label_see_detail">Lihat Detail</string>
+    <string name="label_table_title_report">No. Rek/Telp Terlapor</string>
+    <string name="label_detail_report">Detail Fraud</string>
+    <string name="label_title_fraud">This number %s has a issue and has been complained about its fraud</string>
+    <string name="label_report">Report</string>
+    <string name="label_add_report">Add Report</string>
+    <string name="label_add_fraud">Report Fraud</string>
+
+</resources>

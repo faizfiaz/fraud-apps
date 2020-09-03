@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+
+        <variable
+            name="activity"
+            type="androidx.fragment.app.FragmentActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.fraud.apps.ui.fraud.FraudViewModel" />
+    </data>
+
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <include
+                layout="@layout/appbar_custom"
+                app:activity="@{activity}"
+                app:viewModel="@{(BaseViewModel)viewModel}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_slarge">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/TextAppearance.Text.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:includeFontPadding="false"
+                    android:text="@{@string/label_title_fraud(viewModel.number)}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_ms" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/margin_smed"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/margin_smed">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.Text.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Jenis Penipuan"
+                    android:textSize="@dimen/text_s" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.Text.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Total Kerugian"
+                    android:textSize="@dimen/text_s" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.Text.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Kota"
+                    android:textSize="@dimen/text_s" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.Text.Bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Last Report"
+                    android:textSize="@dimen/text_s" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_divider" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_smed"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="@dimen/padding_large"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:rvAnimation="@{true}"
+                app:rvOverScroll="@{false}"
+                app:setAdapter="@{viewModel.getAdapter()}"
+                tools:ignore="UnusedAttribute"
+                tools:listitem="@layout/item_fraud" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_hms"
+            android:onClick="@{() -> viewModel.clickAddFraud()}"
+            android:text="@string/label_add_fraud"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_speaker" />
+    </FrameLayout>
+
+</layout>

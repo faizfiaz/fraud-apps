@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+
+        <variable
+            name="activity"
+            type="androidx.fragment.app.FragmentActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.fraud.apps.ui.addReport.AddReportViewModel" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/appbar_custom"
+                app:activity="@{activity}"
+                app:viewModel="@{(BaseViewModel)viewModel}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_small">
+
+                    <TextView
+                        style="@style/TextAppearance.Text.Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_hmed"
+                        android:gravity="start"
+                        android:text="Number"
+                        android:textSize="@dimen/text_ml" />
+
+                    <!--suppress AndroidUnknownAttribute -->
+                    <EditText
+                        android:id="@+id/edt_number"
+                        style="@style/EditTextApps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:afterTextChanged="@{viewModel::afterNumberChanged}"
+                        android:hint="Ex : (021) 66352636 or 11123-4232-3242"
+                        android:padding="@dimen/padding_small"
+                        android:text="@{viewModel.number}" />
+
+                    <TextView
+                        style="@style/TextAppearance.Text.Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smed"
+                        android:gravity="start"
+                        android:text="Type Number"
+                        android:textSize="@dimen/text_ml" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        style="@style/EditTextApps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:entries="@array/typeNumber"
+                        android:padding="@dimen/padding_small"
+                        app:selectedValue="@={viewModel.typeNumber}" />
+
+                    <include layout="@layout/layout_divider" />
+
+                    <Button
+                        style="@style/ButtonApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/default_button"
+                        android:onClick="@{() -> viewModel.createReport()}"
+                        android:text="Submit Report"
+                        android:textAllCaps="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

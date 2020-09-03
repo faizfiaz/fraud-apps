@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+
+        <variable
+            name="activity"
+            type="androidx.fragment.app.FragmentActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.fraud.apps.ui.addFraud.AddFraudViewModel" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/appbar_custom"
+                app:activity="@{activity}"
+                app:viewModel="@{(BaseViewModel)viewModel}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_small">
+
+                    <TextView
+                        style="@style/TextAppearance.Text.Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_hmed"
+                        android:gravity="start"
+                        android:text="Jenis Penipuan"
+                        android:textSize="@dimen/text_ml" />
+
+                    <!--suppress AndroidUnknownAttribute -->
+                    <EditText
+                        android:id="@+id/edt_type_fraud"
+                        style="@style/EditTextApps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:afterTextChanged="@{viewModel::afterTypeFraudChanged}"
+                        android:hint="Ex : Penipuan Kartu ATM"
+                        android:text="@{viewModel.typeFraud}"
+                        android:padding="@dimen/padding_small" />
+
+                    <TextView
+                        style="@style/TextAppearance.Text.Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_hmed"
+                        android:gravity="start"
+                        android:text="Total Kerugian (Rupiah)"
+                        android:textSize="@dimen/text_ml" />
+
+                    <!--suppress AndroidUnknownAttribute -->
+                    <EditText
+                        android:id="@+id/edt_total_loss"
+                        style="@style/EditTextApps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:afterTextChanged="@{viewModel::afterTotalLossChanged}"
+                        android:hint="Ex : 800"
+                        android:text="@{viewModel.totalLoss}"
+                        android:inputType="number"
+                        android:padding="@dimen/padding_small" />
+
+                    <TextView
+                        style="@style/TextAppearance.Text.Regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_hmed"
+                        android:gravity="start"
+                        android:text="Kota"
+                        android:textSize="@dimen/text_ml" />
+
+                    <!--suppress AndroidUnknownAttribute -->
+                    <EditText
+                        android:id="@+id/edt_city"
+                        style="@style/EditTextApps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@{viewModel.city}"
+                        android:afterTextChanged="@{viewModel::afterCityChanged}"
+                        android:hint="Ex : (021) 66352636 or 11123-4232-3242"
+                        android:padding="@dimen/padding_small" />
+
+                    <include layout="@layout/layout_divider" />
+
+                    <Button
+                        style="@style/ButtonApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/default_button"
+                        android:onClick="@{() -> viewModel.createFraud()}"
+                        android:text="@{viewModel.buttonFraud}"
+                        android:textAllCaps="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

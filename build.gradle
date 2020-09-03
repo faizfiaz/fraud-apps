@@ -1,0 +1,88 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.3'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.google.com' }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 19
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+    constraintLayoutVersion = '1.1.3'
+    recyclerViewVersion = '1.0.0'
+    cardViewVersion = '1.0.0'
+    googleLayoutVersion = '1.3.0-alpha02'
+    multidexVersion = '1.0.3'
+    appCompatVersion = '1.2.0'
+    legacy = '1.0.0'
+    mlkitBarcode='16.0.1'
+    mlFirebase='24.0.3'
+    firebaseCore='17.4.4'
+    calendarView='1.4.0'
+    timePicker='1.0.0'
+    glideVersion='4.11.0'
+
+    // App dependencies
+    supportLibraryVersion = '1.1.0'
+    materialVersion = '1.0.0'
+    vectorDrawableVersion = '1.0.1'
+    animatedVectorDrawableVersion = '1.0.0'
+    gsonVersion = '2.8.2'
+    calligraphyVersion = '2.2.0'
+    kotlinCoreVersion = '1.3.1'
+    kotlinVersion = '2.2.0'
+    overScroll = '1.1.0'
+    animationRecycler = '3.0.0'
+
+    dagger2Version = '2.16'
+    rxjava2Version = '2.2.8'
+    rxandroidVersion = '2.1.1'
+    placeholderviewVersion = '0.6.1'
+    debugDBVersion = '1.0.3'
+    timberVersion = '4.7.1'
+    lifecycleVersion = '2.2.0'
+    navVersion = "2.3.0"
+
+    //data
+    rxRetrofitVersion = "2.4.0"
+    retrofitVersion = "2.7.1"
+    loggingInterceptorVersion = "3.10.0"
+    converterScalarsVersion = "2.1.0"
+    lombokVersion = "1.18.6"
+
+    // Test dependencies
+    junitTestVersion = '4.12'
+    espressoVersion = '3.2.0'
+    mockitoVersion = '3.3.3'
+    jnTestVersion = '1.1.1'
+
+    // country code
+    countryCodePickerVersion = '2.4.0'
+}

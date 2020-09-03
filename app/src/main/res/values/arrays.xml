@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="typeNumber">
+        <item>Account Bank</item>
+        <item>Phone Number</item>
+
+    </string-array>
+
+</resources>

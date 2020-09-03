@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@+id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.fraud.apps.ui.home.HomeFragment"
+        android:label="Home Page"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_fraudFragment"
+            app:destination="@id/fraudFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_addReportFragment"
+            app:destination="@id/addReportFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fraudFragment"
+        android:name="com.fraud.apps.ui.fraud.FraudFragment"
+        android:label="Fraud Page"
+        tools:layout="@layout/fragment_fraud">
+
+        <action
+            android:id="@+id/action_fraudFragment_to_addFraudFragment"
+            app:destination="@id/addFraudFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/fraudFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addReportFragment"
+        android:name="com.fraud.apps.ui.addReport.AddReportFragment"
+        android:label="Add Report Page"
+        tools:layout="@layout/fragment_add_report">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFraudFragment"
+        android:name="com.fraud.apps.ui.addFraud.AddFraudFragment"
+        android:label="Add Fraud Page"
+        tools:layout="@layout/fragment_add_fraud">
+
+    </fragment>
+
+
+</navigation>
