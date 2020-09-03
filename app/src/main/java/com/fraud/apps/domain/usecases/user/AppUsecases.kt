@@ -128,7 +128,11 @@ open class AppUsecases(mapper: ReportMapper, val fraudMapper: FraudMapper, repos
 
         reports.forEach {
             value = if (preferencesManager?.prefLastUpdateFraud!! == 0L) {
-                async { getFraudFromAPI(it?.id!!) }.await() as Double
+                try {
+                    async { getFraudFromAPI(it?.id!!) }.await() as Double
+                } catch (e: java.lang.Exception) {
+                    0.0
+                }
             } else {
                 val lastUpdate = preferencesManager?.prefLastUpdateFraud
                 val divideLastUpdate = Date().time - lastUpdate!!

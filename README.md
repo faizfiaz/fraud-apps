@@ -1,9 +1,14 @@
 # Fraud Apps
 
 Tech Highlight
-#Kotlin
-#MVVM
-#Usecase pattern
+#Kotlin,
+#MVVM,
+#Usecase pattern,
+#Navigation Component,
+#Data Binding,
+#Dagger,
+#SQLite,
+#Retrofit,
 
 Class and Method definition
 
