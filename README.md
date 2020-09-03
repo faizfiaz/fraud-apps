@@ -59,5 +59,5 @@ Instalation
 3. Add env properties in drive to folder env
 4. Rebuild
 
-link gdrive : https://drive.google.com/drive/folders/1zKYBsWeJVUaPSWa7Mm7PyenTHTVOrH91?usp=sharing
+link gdrive : https://drive.google.com/drive/folders/1qXr5CxyD6uEP6siWrPo99QVA3Ni99eDb?usp=sharing
 
