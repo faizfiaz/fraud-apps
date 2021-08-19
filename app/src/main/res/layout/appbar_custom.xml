@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.fraud.apps.ui.base.BaseViewModel" />
+            type="com.fitness.tracking.ui.base.BaseViewModel" />
     </data>
 
     <LinearLayout

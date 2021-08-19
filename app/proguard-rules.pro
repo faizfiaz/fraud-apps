@@ -87,5 +87,5 @@
 -keep interface android.support.v7.** { *; }
 
 #Model and entities
--keep class com.fraud.apps.domain.models.** { *; }
--keep class com.fraud.apps.domain.entities.** { *; }
+-keep class com.fitness.tracking.domain.models.** { *; }
+-keep class com.fitness.tracking.domain.entities.** { *; }

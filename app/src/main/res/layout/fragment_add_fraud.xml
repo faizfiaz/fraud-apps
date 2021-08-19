@@ -4,7 +4,7 @@
 
     <data>
 
-        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+        <import type="com.fitness.tracking.ui.base.BaseViewModel" />
 
         <variable
             name="activity"
@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.fraud.apps.ui.addFraud.AddFraudViewModel" />
+            type="com.fitness.tracking.ui.addFraud.AddFraudViewModel" />
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"

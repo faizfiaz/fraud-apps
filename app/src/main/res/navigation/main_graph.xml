@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.fraud.apps.ui.home.HomeFragment"
+        android:name="com.fitness.tracking.ui.home.HomeFragment"
         android:label="Home Page"
         tools:layout="@layout/fragment_home">
 
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/fraudFragment"
-        android:name="com.fraud.apps.ui.fraud.FraudFragment"
+        android:name="com.fitness.tracking.ui.fraud.FraudFragment"
         android:label="Fraud Page"
         tools:layout="@layout/fragment_fraud">
 
@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/addReportFragment"
-        android:name="com.fraud.apps.ui.addReport.AddReportFragment"
+        android:name="com.fitness.tracking.ui.addReport.AddReportFragment"
         android:label="Add Report Page"
         tools:layout="@layout/fragment_add_report">
 
@@ -59,7 +59,7 @@
 
     <fragment
         android:id="@+id/addFraudFragment"
-        android:name="com.fraud.apps.ui.addFraud.AddFraudFragment"
+        android:name="com.fitness.tracking.ui.addFraud.AddFraudFragment"
         android:label="Add Fraud Page"
         tools:layout="@layout/fragment_add_fraud">
 

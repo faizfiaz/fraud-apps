@@ -5,7 +5,7 @@
 
         <variable
             name="itemViewModel"
-            type="com.fraud.apps.ui.home.adapter.ReportListItemViewModel" />
+            type="com.fitness.tracking.ui.home.adapter.ReportListItemViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

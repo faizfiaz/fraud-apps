@@ -6,11 +6,11 @@
 
     <data>
 
-        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+        <import type="com.fitness.tracking.ui.base.BaseViewModel" />
 
         <variable
             name="viewModel"
-            type="com.fraud.apps.ui.home.HomeViewModel" />
+            type="com.fitness.tracking.ui.home.HomeViewModel" />
     </data>
 
     <FrameLayout

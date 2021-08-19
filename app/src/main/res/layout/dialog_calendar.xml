@@ -6,11 +6,11 @@
 
     <data>
 
-        <import type="com.fraud.apps.ui.base.BaseViewModel" />
+        <import type="com.fitness.tracking.ui.base.BaseViewModel" />
 
         <variable
             name="viewModel"
-            type="com.fraud.apps.ui.datePicker.DatePickerViewModel" />
+            type="com.fitness.tracking.ui.datePicker.DatePickerViewModel" />
     </data>
 
     <LinearLayout

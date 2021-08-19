@@ -8,7 +8,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.fraud.apps"
+        applicationId "com.fitness.tracking"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -46,10 +46,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             Properties props = new Properties()
-            props.load(new FileInputStream(new File('app/env/debug.properties')))
+            props.load(new FileInputStream(file('env/debug.properties')))
 
             manifestPlaceholders = [
-                    APP_NAME      : "DBG - Fraud",
+                    APP_NAME      : "DBG - Sipgar Fitness",
                     FABRIC_API_KEY: "DBG123"
             ]
 
@@ -61,39 +61,16 @@ android {
 
             signingConfig signingConfigs.debug
         }
-        staging {
-            debuggable true
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            Properties props = new Properties()
-            props.load(new FileInputStream(new File('app/env/staging.properties')))
-
-            manifestPlaceholders = [
-                    APP_NAME      : "STG - Fraud",
-                    FABRIC_API_KEY: "STG123"
-            ]
-
-            buildConfigField "String", "API_BASE_URL", props["API_BASE_URL"]
-            buildConfigField("boolean", "USE_MOCK_RESPONSE", "false")
-
-            versionNameSuffix "-stg"
-            applicationIdSuffix ".stg"
-
-            signingConfig signingConfigs.debug
-        }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             Properties props = new Properties()
-            props.load(new FileInputStream(new File('app/env/release.properties')))
+            props.load(new FileInputStream(file('env/release.properties')))
 
             manifestPlaceholders = [
-                    APP_NAME      : "Fraud",
-                    FABRIC_API_KEY: "48bb26bf9ceb12bffa16cbbe1d97c465ff0ba3df"
+                    APP_NAME      : "Sipgar Fitness",
             ]
 
             buildConfigField "String", "API_BASE_URL", props["API_BASE_URL"]
@@ -111,7 +88,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     dataBinding {
@@ -134,6 +111,12 @@ dependencies {
     implementation "com.akexorcist:snap-time-picker:$rootProject.timePicker"
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    // Pose detection with default models
+    implementation 'com.google.mlkit:pose-detection:17.0.1-beta5'
+    // Pose detection with accurate models
+    implementation 'com.google.mlkit:pose-detection-accurate:17.0.1-beta5'
+    implementation 'com.google.mlkit:camera:16.0.0-beta1'
+    implementation 'com.google.guava:guava:27.1-android'
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
@@ -189,6 +172,12 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
 
 }
+configurations {
+    // Resolves dependency conflict caused by some dependencies use
+    // com.google.guava:guava and com.google.guava:listenablefuture together.
+    all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+}
+
 //apply plugin: 'com.google.gms.google-services'
 //googleServices { disableVersionCheck = true }
 
